@@ -1,16 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import EventLayout from "./components/EventLayout"; // layout with sidebar
+import EventList from "./components/EventList";
+import Eventform from "./components/Eventform";
+import EditEvent from "./components/EditEvent";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     
-    </>
-  )
+      <Routes>
+        <Route path="/" element={<EventLayout />}>
+          <Route index element={<EventList />} />
+          <Route path="add" element={<Eventform />} />
+          <Route path="edit/:id" element={<EditEvent />} />
+        </Route>
+      </Routes>
+  );
 }
 
-export default App
+export default App;
