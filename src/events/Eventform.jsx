@@ -19,7 +19,6 @@ const EventForm = () => {
       date: values.Date.format("YYYY-MM-DD"),
     };
 
-    // Check for venue+date conflict
     if (isEventConflict(events, newEvent)) {
       message.error("An event already exists at the same venue and date!");
       return;
