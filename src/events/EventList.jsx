@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Table, Button, Tag, Popconfirm, message } from "antd";
+import { useEffect, useState } from "react";
+import { Table, Tag, Popconfirm, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
+import Button from "../components/Button";
+import useLocalStorageEvents from "../hooks/useLocalStorageEvents";
 
 const EventList = () => {
-  const [events, setEvents] = useState([]);
+  const { events, deleteEvent } = useLocalStorageEvents();
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedEvents = JSON.parse(localStorage.getItem("events")) || [];
-    setEvents(storedEvents);
-  }, []);
+    setData(events); 
+  }, [events]);
 
   const handleDelete = (id) => {
-    const updatedEvents = events.filter((event) => event.id !== id);
-    localStorage.setItem("events", JSON.stringify(updatedEvents));
-    setEvents(updatedEvents);
+    deleteEvent(id);
     message.success("Event deleted successfully");
   };
 
@@ -48,7 +48,7 @@ const EventList = () => {
       key: "actions",
       render: (_, record) => (
         <>
-          <Button type="link" onClick={() => navigate(`/edit/${record.id}`)}>
+          <Button style={{color:"green"}} type="link" onClick={() => navigate(`/edit/${record.id}`)}>
             Edit
           </Button>
           <Popconfirm
@@ -67,16 +67,27 @@ const EventList = () => {
   ];
 
   return (
-    <div>
-      <h2>Event List - ebPearls Pvt. Ltd, Kupondole, Lalitpur</h2>
-      <Button type="primary" onClick={() => navigate("/add")}>
-        Add Event
-      </Button>
+    <div className="max-w-5xl mx-auto mt-6">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Event List</h2>
+        <Button
+          type="primary"
+          ghost
+          onClick={() => navigate("/add")}
+          style={{
+            color: "green", 
+            borderColor: "green", 
+            backgroundColor: "white",
+          }}
+        >
+          Add Event
+        </Button>
+      </div>
       <Table
-        dataSource={events}
+        dataSource={data}
         columns={columns}
         rowKey="id"
-        style={{ marginTop: 16 }}
+        className="bg-white rounded shadow"
       />
     </div>
   );
