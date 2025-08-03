@@ -1,5 +1,4 @@
-import "./App.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import EventLayout from "./events/EventLayout";
 import EventList from "./events/EventList";
 import EventForm from "./events/Eventform";
