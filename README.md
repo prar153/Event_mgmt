@@ -17,7 +17,7 @@ A simple and interactive Event Management System built with **ReactJS**, designe
 
 ---
 
-## 🚀 Features
+## Features
 
 ### Add Event
 
@@ -55,7 +55,7 @@ A simple and interactive Event Management System built with **ReactJS**, designe
 
 ---
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - ReactJS (Vite)
 - Tailwind CSS
@@ -65,3 +65,40 @@ A simple and interactive Event Management System built with **ReactJS**, designe
 - Custom React Hooks
 
 ---
+##  Setup Instructions
+
+Follow these steps to run the project locally:
+
+### 1. Clone the Repository 
+
+```bash
+git clone https://github.com/prar153/Event_mgmt
+cd event_mgmt
+
+
+
+-### 2. Install the core dependencies:
+
+```bash
+npm install
+# or
+pnpm install
+
+React router dom
+npm install react-router-dom
+
+Ant design
+npm install antd
+
+Tailwind css
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+-### 3. Run the app
+npm run dev
+# or
+pnpm dev
+
+
+
+
